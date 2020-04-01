@@ -14,8 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - StopMovement
-  - Obstacle
+  - 
+  - 
   - 
   - 
   - 
@@ -39,6 +39,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Collider
+    uniqueID: 3443368891
+    locked: 0
+  - name: Ground-0
+    uniqueID: 193287511
+    locked: 0
+  - name: Ground Layer
+    uniqueID: 2132611153
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Canvas
+    uniqueID: 1567841213
     locked: 0

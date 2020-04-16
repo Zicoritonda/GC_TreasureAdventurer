@@ -13,6 +13,8 @@ public class NavWithCollider : MonoBehaviour
         Debug.Log(this.gameObject.name + " collided with " + col.name);
         if(col.name == colliderName)
         {
+            CharacterController.mapBefore = SceneManager.GetActiveScene().name;
+            //Debug.Log()
             SceneManager.LoadScene(sceneName);
         }
 

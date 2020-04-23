@@ -6,6 +6,7 @@ public class CharacterRenderer : MonoBehaviour
 {
     public static readonly string[] staticDirections = { "idle_N", "idle_NW", "idle_W", "idle_SW", "idle_S", "idle_SE", "idle_E", "idle_NE" };
     public static readonly string[] runDirections = { "run_N", "run_NW", "run_W", "run_SW", "run_S", "run_SE", "run_E", "run_NE" };
+    public static readonly string[] attackDirections = { "attack_N", "attack_NW", "attack_W", "attack_SW", "attack_S", "attack_SE", "attack_E", "attack_NE" };
 
     Animator animator;
     int lastDirection = 4;
@@ -14,6 +15,12 @@ public class CharacterRenderer : MonoBehaviour
     {
         //cache the animator component
         animator = GetComponent<Animator>();
+    }
+
+    public void attackAnimation(Vector2 direction)
+    {
+        lastDirection = DirectionToIndex(direction, 8);
+        animator.Play(attackDirections[lastDirection]);
     }
 
     public void SetDirection(Vector2 direction)

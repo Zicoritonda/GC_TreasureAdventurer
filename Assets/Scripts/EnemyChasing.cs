@@ -8,8 +8,8 @@ public class EnemyChasing : MonoBehaviour
 
     public Transform Player;
     float MoveSpeed = 0.65f;
-    float MaxDist = 10f;
-    float MinDist = 0.5f;
+    float MaxDist = 0.4f;
+    float MinDist = 0.3f;
     private float range;
     private float angle;
     CharacterRenderer isoRenderer;
@@ -31,8 +31,25 @@ public class EnemyChasing : MonoBehaviour
     void chaseChar()
     {
         Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
-        isoRenderer.SetDirection(inputVector);
-        transform.position = Vector2.MoveTowards(transform.position, Player.position, MoveSpeed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, Player.position) <= MaxDist)
+        {
+            //Here Call any function U want Like Shoot at here or something
+            Debug.Log("hai");
+            attackChar();
+
+        }
+        else
+        {
+            isoRenderer.SetDirection(inputVector);
+            transform.position = Vector2.MoveTowards(transform.position, Player.position, MoveSpeed * Time.deltaTime);
+        }
+    }
+
+    void attackChar()
+    {
+        Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
+        isoRenderer.attackAnimation(inputVector);
+        //isoRenderer.SetDirection(inputVector);
     }
 
     // Update is called once per frame
@@ -66,16 +83,20 @@ public class EnemyChasing : MonoBehaviour
             {
                 chaseChar();
             }
+            else if (Vector2.Distance(transform.position, Player.position) <= MaxDist)
+            {
+                //Here Call any function U want Like Shoot at here or something
+                Debug.Log("hai");
+                attackChar();
+
+            }
             //Move();
 
             //Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
             //isoRenderer.SetDirection(inputVector);
             //transform.position = Vector2.MoveTowards(transform.position, Player.position, MoveSpeed * Time.deltaTime);
 
-            if (Vector2.Distance(transform.position, Player.position) <= MaxDist)
-            {
-                //Here Call any function U want Like Shoot at here or something
-            }
+
 
         }
         else

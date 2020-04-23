@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{BDD7D5E7-D406-7546-6DA6-27D91C99AC10}</ProjectGuid>
+    <ProjectGuid>{6271B259-36EE-71B2-53CF-79337E0C9853}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -69,38 +69,39 @@
     <Compile Include="Assets\Scripts\EnemyChasing.cs" />
     <Compile Include="Assets\Scripts\NavWithCollider.cs" />
     <Compile Include="Assets\Scripts\SceneNavigator.cs" />
+    <None Include="Assets\C&amp;C_Pack\Goblin_rouge\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Folder/Unity/GC ver.2 Treasure Hunter/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

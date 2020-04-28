@@ -28,6 +28,12 @@ public class EnemyChasing : MonoBehaviour
 
     }
 
+    void dieChar()
+    {
+        Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
+        isoRenderer.attack1Animation(inputVector);
+    }
+
     void chaseChar()
     {
         Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
@@ -48,7 +54,7 @@ public class EnemyChasing : MonoBehaviour
     void attackChar()
     {
         Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
-        isoRenderer.attackAnimation(inputVector);
+        isoRenderer.attack1Animation(inputVector);
         //isoRenderer.SetDirection(inputVector);
     }
 

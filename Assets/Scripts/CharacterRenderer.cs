@@ -6,7 +6,8 @@ public class CharacterRenderer : MonoBehaviour
 {
     public static readonly string[] staticDirections = { "idle_N", "idle_NW", "idle_W", "idle_SW", "idle_S", "idle_SE", "idle_E", "idle_NE" };
     public static readonly string[] runDirections = { "run_N", "run_NW", "run_W", "run_SW", "run_S", "run_SE", "run_E", "run_NE" };
-    public static readonly string[] attackDirections = { "attack_N", "attack_NW", "attack_W", "attack_SW", "attack_S", "attack_SE", "attack_E", "attack_NE" };
+    public static readonly string[] attack1Directions = { "attack1_N", "attack1_NW", "attack1_W", "attack1_SW", "attack1_S", "attack1_SE", "attack1_E", "attack1_NE" };
+    public static readonly string[] attack2Directions = { "attack2_N", "attack2_NW", "attack2_W", "attack2_SW", "attack2_S", "attack2_SE", "attack2_E", "attack2_NE" };
 
     Animator animator;
     int lastDirection = 4;
@@ -17,10 +18,16 @@ public class CharacterRenderer : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void attackAnimation(Vector2 direction)
+    public void attack1Animation(Vector2 direction)
     {
         lastDirection = DirectionToIndex(direction, 8);
-        animator.Play(attackDirections[lastDirection]);
+        animator.Play(attack1Directions[lastDirection]);
+    }
+
+    public void attack2Animation(Vector2 direction)
+    {
+        lastDirection = DirectionToIndex(direction, 8);
+        animator.Play(attack2Directions[lastDirection]);
     }
 
     public void SetDirection(Vector2 direction)

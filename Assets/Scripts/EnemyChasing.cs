@@ -7,7 +7,7 @@ public class EnemyChasing : MonoBehaviour
 {
 
     public Transform Player;
-    float MoveSpeed = 0.55f;
+    float MoveSpeed = 0.7f;
     float MaxDist = 0.4f;
     float MinDist = 0.3f;
     private float range;
@@ -59,7 +59,7 @@ public class EnemyChasing : MonoBehaviour
         Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
         isoRenderer.attack1Animation(inputVector);
         attackcount++;
-        if (attackcount == 13)
+        if (attackcount == 26)
         {
             CharacterStatus.health -= demage;
             attackcount = 0;

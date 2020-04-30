@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CharacterStatus : MonoBehaviour
 {
     public static float health = 100.0f;
-    //bool dead = false;
+    public static bool dead = false;
     CharacterRenderer isoRenderer;
 
     public RectTransform healthbar;
@@ -23,7 +23,7 @@ public class CharacterStatus : MonoBehaviour
         
         if (health < 0)
         {
-            //dead = true;
+            dead = true;
             isoRenderer.dieAnimation();
         }
         else

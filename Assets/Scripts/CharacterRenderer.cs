@@ -31,6 +31,12 @@ public class CharacterRenderer : MonoBehaviour
         animator.Play(dieDirections[lastDirection]);
     }
 
+    public void idleAnimation()
+    {
+        //lastDirection = DirectionToIndex(direction, 8);
+        animator.Play(staticDirections[lastDirection]);
+    }
+
     public void attack2Animation(Vector2 direction)
     {
         lastDirection = DirectionToIndex(direction, 8);

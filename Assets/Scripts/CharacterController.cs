@@ -12,14 +12,18 @@ public class CharacterController : MonoBehaviour
 
     bool attack = false;
     bool contack = false;
+
+    Vector2 target;
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
         isoRenderer = GetComponentInChildren<CharacterRenderer>();
+        target = rbody.position;
     }
 
     void Start()
     {
+        
         /*GameObject teleport = GameObject.Find("Teleport - " + mapBefore);
         Debug.Log(teleport.name);*/
         /*Vector3 startPos = teleport.GetComponent<CompositeCollider2D>().bounds.center;
@@ -34,21 +38,36 @@ public class CharacterController : MonoBehaviour
         {
             if (attack == false)
             {
-                Vector2 currentPos = rbody.position;
-                float horizontalInput = Input.GetAxis("Horizontal");
-                float verticalInput = Input.GetAxis("Vertical");
-                Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    //currentPos = rbody.position;
+                    target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                }
+                if(Vector2.Distance(rbody.position, target) >= 0.05f && target != null)
+                {
+                    Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(rbody.position - target)), 1);
+                    //Vector2 movement = inputVector * movementSpeed;
+                    //Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
+                    isoRenderer.SetDirection(inputVector);
+                    //rbody.MovePosition(newPos);
+                    rbody.position = Vector2.MoveTowards(rbody.position, target, movementSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    isoRenderer.idleAnimation();
+                }
+                
+                //float horizontalInput = Input.GetAxis("Horizontal");
+                //float verticalInput = Input.GetAxis("Vertical");
+                //Vector2 inputVector = new Vector2(horizontalInput, verticalInput);
                 //Debug.Log(inputVector);
-                inputVector = Vector2.ClampMagnitude(inputVector, 1);
-                Vector2 movement = inputVector * movementSpeed;
-                Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
-                isoRenderer.SetDirection(movement);
-                rbody.MovePosition(newPos);
+                //inputVector = Vector2.ClampMagnitude(inputVector, 1);
+                
             }
 
             if (this.transform.Find("Canvas").gameObject.activeSelf)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.T))
                 {
                     attack = true;
                 }
@@ -75,6 +94,7 @@ public class CharacterController : MonoBehaviour
                 //Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
                 isoRenderer.attack2Animation(inputVector);
                 CharacterNotice.enemy.SetActive(false);
+                target = rbody.position;
                 attack = false;
                 contack = false;
             }

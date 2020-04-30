@@ -66,10 +66,10 @@
     <Compile Include="Assets\Scripts\CharacterController.cs" />
     <Compile Include="Assets\Scripts\CharacterNotice.cs" />
     <Compile Include="Assets\Scripts\CharacterRenderer.cs" />
+    <Compile Include="Assets\Scripts\CharacterStatus.cs" />
     <Compile Include="Assets\Scripts\EnemyChasing.cs" />
     <Compile Include="Assets\Scripts\NavWithCollider.cs" />
     <Compile Include="Assets\Scripts\SceneNavigator.cs" />
-    <None Include="Assets\C&amp;C_Pack\Goblin_rouge\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

@@ -7,13 +7,17 @@ public class EnemyChasing : MonoBehaviour
 {
 
     public Transform Player;
-    float MoveSpeed = 0.65f;
+    float MoveSpeed = 0.55f;
     float MaxDist = 0.4f;
     float MinDist = 0.3f;
     private float range;
     private float angle;
     CharacterRenderer isoRenderer;
     int lDir = 0;
+
+    //public static bool hit;
+    float demage = 5.0f;
+    int attackcount = 0;
     //public Rigidbody2d rb;
 
     private void Awake()
@@ -40,9 +44,8 @@ public class EnemyChasing : MonoBehaviour
         if (Vector2.Distance(transform.position, Player.position) <= MaxDist)
         {
             //Here Call any function U want Like Shoot at here or something
-            Debug.Log("hai");
+            //Debug.Log("hai");
             attackChar();
-
         }
         else
         {
@@ -55,6 +58,13 @@ public class EnemyChasing : MonoBehaviour
     {
         Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
         isoRenderer.attack1Animation(inputVector);
+        attackcount++;
+        if (attackcount == 13)
+        {
+            CharacterStatus.health -= demage;
+            attackcount = 0;
+        }
+        Debug.Log(attackcount);
         //isoRenderer.SetDirection(inputVector);
     }
 
@@ -92,10 +102,14 @@ public class EnemyChasing : MonoBehaviour
             else if (Vector2.Distance(transform.position, Player.position) <= MaxDist)
             {
                 //Here Call any function U want Like Shoot at here or something
-                Debug.Log("hai");
+                //Debug.Log("hai");
                 attackChar();
-
             }
+            else
+            {
+                if (point1 != null && point2 != null) Patrol();
+            }
+
             //Move();
 
             //Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
@@ -107,7 +121,35 @@ public class EnemyChasing : MonoBehaviour
         }
         else
         {
-            isoRenderer.SetDirection(new Vector2(0, 0));
+            if (point1 != null && point2 != null) Patrol();
+        }
+    }
+
+    public Transform point1;
+    public Transform point2;
+    int point = 1;
+
+    void Patrol()
+    {
+        if (point == 1)
+        {
+            Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - point2.position)), 1);
+            isoRenderer.SetDirection(inputVector);
+            transform.position = Vector2.MoveTowards(transform.position, point2.position, MoveSpeed * Time.deltaTime);
+            if(Vector2.Distance(transform.position, point2.position) <= 0.2f)
+            {
+                point = 2;
+            }
+        }
+        else
+        {
+            Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - point1.position)), 1);
+            isoRenderer.SetDirection(inputVector);
+            transform.position = Vector2.MoveTowards(transform.position, point1.position, MoveSpeed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, point1.position) <= 0.2f)
+            {
+                point = 1;
+            }
         }
     }
 

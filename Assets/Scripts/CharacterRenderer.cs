@@ -8,6 +8,7 @@ public class CharacterRenderer : MonoBehaviour
     public static readonly string[] runDirections = { "run_N", "run_NW", "run_W", "run_SW", "run_S", "run_SE", "run_E", "run_NE" };
     public static readonly string[] attack1Directions = { "attack1_N", "attack1_NW", "attack1_W", "attack1_SW", "attack1_S", "attack1_SE", "attack1_E", "attack1_NE" };
     public static readonly string[] attack2Directions = { "attack2_N", "attack2_NW", "attack2_W", "attack2_SW", "attack2_S", "attack2_SE", "attack2_E", "attack2_NE" };
+    public static readonly string[] dieDirections = { "die_N", "die_NW", "die_W", "die_SW", "die_S", "die_SE", "die_E", "die_NE" };
 
     Animator animator;
     int lastDirection = 4;
@@ -22,6 +23,12 @@ public class CharacterRenderer : MonoBehaviour
     {
         lastDirection = DirectionToIndex(direction, 8);
         animator.Play(attack1Directions[lastDirection]);
+    }
+
+    public void dieAnimation()
+    {
+        //lastDirection = DirectionToIndex(direction, 8);
+        animator.Play(dieDirections[lastDirection]);
     }
 
     public void attack2Animation(Vector2 direction)

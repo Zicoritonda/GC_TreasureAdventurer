@@ -64,65 +64,69 @@ public class EnemyChasing : MonoBehaviour
             CharacterStatus.health -= demage;
             attackcount = 0;
         }
-        Debug.Log(attackcount);
+        //Debug.Log(attackcount);
         //isoRenderer.SetDirection(inputVector);
     }
 
     // Update is called once per frame
     void Update()
     {
-        range = Vector2.Distance(transform.position, Player.position);
-        angle = Vector2.Angle(transform.up, Player.position - transform.position);
-
-        lDir = isoRenderer.getDirection();
-        //Debug.Log(range);
-
-        if (range <= 1.5f && range >= MinDist)
+        if(EnemyStatus.dead != true)
         {
-            if (lDir == 0 && angle < 45.0f)
+            range = Vector2.Distance(transform.position, Player.position);
+            angle = Vector2.Angle(transform.up, Player.position - transform.position);
+
+            lDir = isoRenderer.getDirection();
+            //Debug.Log(range);
+
+            if (range <= 1.5f && range >= MinDist)
             {
-                chaseChar();
-            }
-            else if ((lDir == 1 || lDir == 7) && angle < 90.0f && angle > 0)
-            {
-                chaseChar();
-            }
-            else if ((lDir == 2 || lDir == 6) && angle < 135.0f && angle > 45.0f)
-            {
-                chaseChar();
-            }
-            else if ((lDir == 3 || lDir == 5) && angle < 180.0f && angle > 90.0f)
-            {
-                chaseChar();
-            }
-            else if (lDir == 4 && angle > 135.0f)
-            {
-                chaseChar();
-            }
-            else if (Vector2.Distance(transform.position, Player.position) <= MaxDist)
-            {
-                //Here Call any function U want Like Shoot at here or something
-                //Debug.Log("hai");
-                attackChar();
+                if (lDir == 0 && angle < 45.0f)
+                {
+                    chaseChar();
+                }
+                else if ((lDir == 1 || lDir == 7) && angle < 90.0f && angle > 0)
+                {
+                    chaseChar();
+                }
+                else if ((lDir == 2 || lDir == 6) && angle < 135.0f && angle > 45.0f)
+                {
+                    chaseChar();
+                }
+                else if ((lDir == 3 || lDir == 5) && angle < 180.0f && angle > 90.0f)
+                {
+                    chaseChar();
+                }
+                else if (lDir == 4 && angle > 135.0f)
+                {
+                    chaseChar();
+                }
+                else if (Vector2.Distance(transform.position, Player.position) <= MaxDist)
+                {
+                    //Here Call any function U want Like Shoot at here or something
+                    //Debug.Log("hai");
+                    attackChar();
+                }
+                else
+                {
+                    if (point1 != null && point2 != null) Patrol();
+                }
+
+                //Move();
+
+                //Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
+                //isoRenderer.SetDirection(inputVector);
+                //transform.position = Vector2.MoveTowards(transform.position, Player.position, MoveSpeed * Time.deltaTime);
+
+
+
             }
             else
             {
                 if (point1 != null && point2 != null) Patrol();
             }
-
-            //Move();
-
-            //Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Player.position)), 1);
-            //isoRenderer.SetDirection(inputVector);
-            //transform.position = Vector2.MoveTowards(transform.position, Player.position, MoveSpeed * Time.deltaTime);
-
-
-
         }
-        else
-        {
-            if (point1 != null && point2 != null) Patrol();
-        }
+        
     }
 
     public Transform point1;

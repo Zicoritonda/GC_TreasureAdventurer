@@ -21,15 +21,16 @@ public class CharacterStatus : MonoBehaviour
     void Update()
     {
         
-        if (health < 0)
+        if (health <= 0)
         {
+            healthbar.sizeDelta = new Vector2(520 * (health / 100), healthbar.rect.height);
             dead = true;
             isoRenderer.dieAnimation();
         }
         else
         {
-            healthbar.sizeDelta = new Vector2(567 * (health / 100), healthbar.rect.height);
-            Debug.Log("health: " + health);
+            healthbar.sizeDelta = new Vector2(520 * (health / 100), healthbar.rect.height);
+            //Debug.Log("health: " + health);
         }
     }
 }

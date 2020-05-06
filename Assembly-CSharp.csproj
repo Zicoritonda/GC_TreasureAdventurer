@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\CharacterRenderer.cs" />
     <Compile Include="Assets\Scripts\CharacterStatus.cs" />
     <Compile Include="Assets\Scripts\EnemyChasing.cs" />
+    <Compile Include="Assets\Scripts\EnemyStatus.cs" />
     <Compile Include="Assets\Scripts\NavWithCollider.cs" />
     <Compile Include="Assets\Scripts\SceneNavigator.cs" />
     <Reference Include="Unity.Timeline.Editor">

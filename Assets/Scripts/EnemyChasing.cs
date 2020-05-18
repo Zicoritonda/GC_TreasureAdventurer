@@ -7,7 +7,7 @@ public class EnemyChasing : MonoBehaviour
 {
 
     public Transform Player;
-    float MoveSpeed = 0.7f;
+    public float MoveSpeed = 0.7f;
     float MaxDist = 0.4f;
     float MinDist = 0.3f;
     private float range;
@@ -19,6 +19,8 @@ public class EnemyChasing : MonoBehaviour
     float demage = 5.0f;
     int attackcount = 0;
     //public Rigidbody2d rb;
+
+    public bool stun = false;
 
     private void Awake()
     {
@@ -68,10 +70,20 @@ public class EnemyChasing : MonoBehaviour
         //isoRenderer.SetDirection(inputVector);
     }
 
+    void Stun()
+    {
+        //Destroy(this.gameObject);
+        stun = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(EnemyStatus.dead != true)
+        if(stun == true)
+        {
+            Invoke("Stun",2.0f);
+        }
+        if(this.gameObject.GetComponent<EnemyStatus>().dead != true && stun != true)
         {
             range = Vector2.Distance(transform.position, Player.position);
             angle = Vector2.Angle(transform.up, Player.position - transform.position);
@@ -156,6 +168,7 @@ public class EnemyChasing : MonoBehaviour
             }
         }
     }
+
 
     //private void Move()
     //{

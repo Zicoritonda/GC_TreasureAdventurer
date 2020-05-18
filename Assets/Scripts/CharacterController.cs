@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class CharacterController : MonoBehaviour
 
     Vector3 mousePos;
     Vector2 mousePos2D;
+
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -63,7 +65,7 @@ public class CharacterController : MonoBehaviour
                             if (attackAnim > 1) attackAnim = 0;
                             if (Vector2.Distance(transform.position, CharacterNotice.enemy.transform.position) < 1f)
                             {
-                                EnemyStatus.health -= demage;
+                                CharacterNotice.enemy.GetComponent<EnemyStatus>().health -= demage;
                                 //contack = true;
                                 //attackChar(CharacterNotice.enemy.transform);
                             }
@@ -79,46 +81,6 @@ public class CharacterController : MonoBehaviour
                 {
                     target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     attack = false;
-                }
-            }
-            if (Input.GetMouseButtonDown(1))
-            {
-                attack = true;
-
-                /*RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-                if (hit.collider != null)
-                {
-                    if (hit.collider.isTrigger)
-                    {
-                        if (hit.transform.name.Contains("Enemy"))
-                        {
-                            Debug.Log("serang cuy" + hit.transform.name);
-                            Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - hit.transform.position)), 1);
-                            if (attackAnim == 0)
-                            {
-                                isoRenderer.attack1Animation(inputVector);
-                                //attackAnim++;
-                            }
-                            else
-                            {
-                                isoRenderer.attack2Animation(inputVector);
-                                //attackAnim=0;
-                            }
-                            //attack = true;
-                        }
-                    }
-                }*/
-                Debug.Log("enemy");
-                mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePos2D = new Vector2(mousePos.x, mousePos.y);
-
-                attackAnim++;
-                if (attackAnim > 1) attackAnim = 0;
-                if (Vector2.Distance(transform.position, CharacterNotice.enemy.transform.position) < 1f)
-                {
-                    EnemyStatus.health -= demage;
-                    //contack = true;
-                    //attackChar(CharacterNotice.enemy.transform);
                 }
             }
             if (attack == false)
@@ -145,13 +107,100 @@ public class CharacterController : MonoBehaviour
                 
             }
 
-            /*if (this.transform.Find("Canvas").gameObject.activeSelf)
+            //Skill
+            if (Input.GetKeyDown(KeyCode.Space) && CharacterStatus.skill == true)
             {
-                if (Input.GetKeyDown(KeyCode.T))
+                if (CharacterStatus.item[0] != 0)
                 {
-                    attack = true;
+                    Vector2 explosionPos = new Vector2(transform.position.x,transform.position.y);
+                    Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, 0.5f);
+                    foreach (Collider2D hit in colliders)
+                    {
+                        Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
+                        hit.gameObject.GetComponent<EnemyStatus>().health -= 5;
+                        if (rb != null)
+                            AddExplosionForceCustom(rb, 150.0f, explosionPos, 2.0f);
+                        
+                    }
+                    //EnemyStatus.health -= 5;
+                    CharacterStatus.skill = false;
+                    Debug.Log("shock");
                 }
-            }*/
+            }
+
+            //Item 1
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                if(CharacterStatus.item[1] != 0)
+                {
+                    GameObject trap = new GameObject();
+                    trap.transform.position = this.gameObject.transform.position;
+                    trap.name = "Trap";
+                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + CharacterStatus.item[1].ToString() + "_1");
+                    trap.GetComponent<SpriteRenderer>().sortingLayerName = "Ground-0";
+                    trap.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                    trap.AddComponent<CircleCollider2D>().isTrigger = true;
+                    trap.GetComponent<CircleCollider2D>().radius = 0.05f;
+                    trap.AddComponent<TrapStatus>().idtype = CharacterStatus.item[1];
+                    GameObject.Find("item1").GetComponent<Image>().sprite = null;
+                    CharacterStatus.item[1] = 0;
+                }   
+            }
+            //Item 2
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                if (CharacterStatus.item[2] != 0)
+                {
+                    GameObject trap = new GameObject();
+                    trap.transform.position = this.gameObject.transform.position;
+                    trap.name = "Trap";
+                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + CharacterStatus.item[1].ToString() + "_1");
+                    trap.GetComponent<SpriteRenderer>().sortingLayerName = "Ground-0";
+                    trap.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                    trap.AddComponent<CircleCollider2D>().isTrigger = true;
+                    trap.GetComponent<CircleCollider2D>().radius = 0.05f;
+                    trap.AddComponent<TrapStatus>().idtype = CharacterStatus.item[2];
+                    GameObject.Find("item2").GetComponent<Image>().sprite = null;
+                    CharacterStatus.item[2] = 0;
+                }
+            }
+            //Item 3
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (CharacterStatus.item[3] != 0)
+                {
+                    GameObject trap = new GameObject();
+                    trap.transform.position = this.gameObject.transform.position;
+                    trap.name = "Trap";
+                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + CharacterStatus.item[3].ToString() + "_1");
+                    trap.GetComponent<SpriteRenderer>().sortingLayerName = "Ground-0";
+                    trap.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                    trap.AddComponent<CircleCollider2D>().isTrigger = true;
+                    trap.GetComponent<CircleCollider2D>().radius = 0.05f;
+                    trap.AddComponent<TrapStatus>().idtype = CharacterStatus.item[3];
+                    GameObject.Find("item3").GetComponent<Image>().sprite = null;
+                    CharacterStatus.item[3] = 0;
+                }
+            }
+            //Item 4
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (CharacterStatus.item[4] != 0)
+                {
+                    GameObject trap = new GameObject();
+                    trap.transform.position = this.gameObject.transform.position;
+                    trap.name = "Trap";
+                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + CharacterStatus.item[4].ToString() + "_1");
+                    trap.GetComponent<SpriteRenderer>().sortingLayerName = "Ground-0";
+                    trap.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                    trap.AddComponent<CircleCollider2D>().isTrigger = true;
+                    trap.GetComponent<CircleCollider2D>().radius = 0.05f;
+                    trap.AddComponent<TrapStatus>().idtype = CharacterStatus.item[4];
+                    GameObject.Find("item4").GetComponent<Image>().sprite = null;
+                    CharacterStatus.item[4] = 0;
+                }
+            }
+
             if (attack == true)
             {
                 //Debug.Log("serang cuy");
@@ -194,26 +243,11 @@ public class CharacterController : MonoBehaviour
             }
         }
     }
-    void attackChar(Transform Enemy)
+
+    void AddExplosionForceCustom(Rigidbody2D body, float explosionForce, Vector3 explosionPosition, float explosionRadius)
     {
-        Vector2 inputVector = Vector2.ClampMagnitude((Vector2)(-(transform.position - Enemy.position)), 1);
-        if(attackAnim == 0)
-        {
-            isoRenderer.attack1Animation(inputVector);
-            //attackAnim++;
-        }
-        else
-        {
-            isoRenderer.attack2Animation(inputVector);
-            //attackAnim=0;
-        }
-        attackcount++;
-        if (attackcount == 26)
-        {
-            EnemyStatus.health -= demage;
-            attackcount = 0;
-        }
-        //Debug.Log(attackcount);
-        //isoRenderer.SetDirection(inputVector);
+        var dir = (body.transform.position - explosionPosition);
+        float wearoff = 1 - (dir.magnitude / explosionRadius);
+        body.AddForce(dir.normalized * explosionForce * wearoff);
     }
 }

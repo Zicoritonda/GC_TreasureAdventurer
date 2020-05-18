@@ -69,8 +69,14 @@
     <Compile Include="Assets\Scripts\CharacterStatus.cs" />
     <Compile Include="Assets\Scripts\EnemyChasing.cs" />
     <Compile Include="Assets\Scripts\EnemyStatus.cs" />
+    <Compile Include="Assets\Scripts\ItemCanvas.cs" />
+    <Compile Include="Assets\Scripts\ItemHandler.cs" />
     <Compile Include="Assets\Scripts\NavWithCollider.cs" />
     <Compile Include="Assets\Scripts\SceneNavigator.cs" />
+    <Compile Include="Assets\Scripts\TrapStatus.cs" />
+    <Compile Include="Assets\Scripts\TreasureHandler.cs" />
+    <None Include="Assets\Animated Trap\SpriteSheets\Trap.txt" />
+    <None Include="Assets\SpriteOutline\Shaders\SpriteOutline.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Folder/Unity/GC_TreasureAdventurer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

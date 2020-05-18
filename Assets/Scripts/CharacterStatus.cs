@@ -11,6 +11,10 @@ public class CharacterStatus : MonoBehaviour
 
     public RectTransform healthbar;
 
+    //1: skill, 2: , 3: , 4: , 5:
+    public static int[] item = new int[5] { -1, 0, 0, 0, 0 };
+    public static bool skill = true;
+
     // Start is called before the first frame update
     void Start()
     {

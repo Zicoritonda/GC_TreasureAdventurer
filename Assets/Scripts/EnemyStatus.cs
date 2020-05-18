@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
 {
-    public static float health = 50.0f;
-    public static bool dead = false;
+    public float health = 50.0f;
+    public bool dead = false;
     CharacterRenderer isoRenderer;
 
     public RectTransform healthbar;

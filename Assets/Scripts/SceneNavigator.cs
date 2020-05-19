@@ -7,9 +7,8 @@ public class SceneNavigator : MonoBehaviour
 {
     public string sceneName;
 
-    private void OnTriggerEnter2D(Collider2D col)
+    public void changeScene()
     {
-        Debug.Log(this.gameObject.name +" collided with " + col.name);
         SceneManager.LoadScene(sceneName);
     }
 }

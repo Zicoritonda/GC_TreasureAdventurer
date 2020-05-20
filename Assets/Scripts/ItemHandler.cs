@@ -32,6 +32,7 @@ public class ItemHandler : MonoBehaviour
         
     }
 
+    public GameObject player;
     // Update is called once per frame
     void Update()
     {
@@ -39,22 +40,23 @@ public class ItemHandler : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
-                for(int i = 0; i < CharacterStatus.item.Length; i++)
+                for(int i = 0; i < player.GetComponent<CharacterStatus>().item.Length; i++)
                 {
-                    if(CharacterStatus.item[i] == 0)
+                    if(player.GetComponent<CharacterStatus>().item[i] == 0)
                     {
                         if(idtype == 2)
                         {
-                            CharacterStatus.item[i] = idtype;
-                            Debug.Log(CharacterStatus.item[i]);
+                            player.GetComponent<CharacterStatus>().item[i] = idtype;
+                            Debug.Log(player.GetComponent<CharacterStatus>().item[i]);
                             GameObject.Find("item" + i.ToString()).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/key");
                             Destroy(this.gameObject);
+                            player.GetComponent<CharacterStatus>().quest[0] = true;
                             break;
                         }
                         else
                         {
-                            CharacterStatus.item[i] = idtype;
-                            Debug.Log(CharacterStatus.item[i]);
+                            player.GetComponent<CharacterStatus>().item[i] = idtype;
+                            Debug.Log(player.GetComponent<CharacterStatus>().item[i]);
                             GameObject.Find("item" + i.ToString()).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/" + idtype.ToString() + "_1");
                             Destroy(this.gameObject);
                             break;

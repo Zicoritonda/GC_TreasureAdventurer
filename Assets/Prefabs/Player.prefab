@@ -51,6 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1.2
+  startStage: {fileID: 0}
+  menu: {fileID: 0}
 --- !u!50 &3974708312003865458
 Rigidbody2D:
   serializedVersion: 4
@@ -432,12 +434,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 779bec487f4bc3f499ce3f212b6eabce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23670b0794128164aa6ce570b53ccdd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.2, y: 1.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

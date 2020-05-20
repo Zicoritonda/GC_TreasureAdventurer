@@ -12,6 +12,12 @@ public class SceneNavigator : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void reload()
+    {
+        Scene thisScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(thisScene.name);
+    }
+
     public void selectStage()
     {
         if (StagesController.stageNow == sceneName || StagesController.stages[sceneName]) SceneManager.LoadScene(sceneName);

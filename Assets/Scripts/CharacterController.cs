@@ -22,6 +22,9 @@ public class CharacterController : MonoBehaviour
     Vector3 mousePos;
     Vector2 mousePos2D;
 
+    public GameObject startStage;
+    public GameObject menu;
+
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -42,7 +45,7 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(CharacterStatus.dead == false)
+        if(gameObject.GetComponent<CharacterStatus>().dead == false && !startStage.GetComponent<StartStage>().start)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -110,7 +113,8 @@ public class CharacterController : MonoBehaviour
             //Skill
             if (Input.GetKeyDown(KeyCode.Space) && CharacterStatus.skill == true)
             {
-                if (CharacterStatus.item[0] != 0)
+                
+                if (gameObject.GetComponent<CharacterStatus>().item[0] != 0)
                 {
                     Vector2 explosionPos = new Vector2(transform.position.x,transform.position.y);
                     Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, 0.5f);
@@ -131,73 +135,86 @@ public class CharacterController : MonoBehaviour
             //Item 1
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                if(CharacterStatus.item[1] != 0 && CharacterStatus.item[1] != 2)
+                if(gameObject.GetComponent<CharacterStatus>().item[1] != 0 && gameObject.GetComponent<CharacterStatus>().item[1] != 2)
                 {
                     GameObject trap = new GameObject();
                     trap.transform.position = this.gameObject.transform.position;
                     trap.name = "Trap";
-                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + CharacterStatus.item[1].ToString() + "_1");
+                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + gameObject.GetComponent<CharacterStatus>().item[1].ToString() + "_1");
                     trap.GetComponent<SpriteRenderer>().sortingLayerName = "Ground-0";
                     trap.GetComponent<SpriteRenderer>().sortingOrder = 2;
                     trap.AddComponent<CircleCollider2D>().isTrigger = true;
                     trap.GetComponent<CircleCollider2D>().radius = 0.05f;
-                    trap.AddComponent<TrapStatus>().idtype = CharacterStatus.item[1];
+                    trap.AddComponent<TrapStatus>().idtype = gameObject.GetComponent<CharacterStatus>().item[1];
                     GameObject.Find("item1").GetComponent<Image>().sprite = null;
-                    CharacterStatus.item[1] = 0;
+                    gameObject.GetComponent<CharacterStatus>().item[1] = 0;
                 }   
             }
             //Item 2
             if (Input.GetKeyDown(KeyCode.W))
             {
-                if (CharacterStatus.item[2] != 0 && CharacterStatus.item[2] != 2)
+                if (gameObject.GetComponent<CharacterStatus>().item[2] != 0 && gameObject.GetComponent<CharacterStatus>().item[2] != 2)
                 {
                     GameObject trap = new GameObject();
                     trap.transform.position = this.gameObject.transform.position;
                     trap.name = "Trap";
-                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + CharacterStatus.item[1].ToString() + "_1");
+                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + gameObject.GetComponent<CharacterStatus>().item[1].ToString() + "_1");
                     trap.GetComponent<SpriteRenderer>().sortingLayerName = "Ground-0";
                     trap.GetComponent<SpriteRenderer>().sortingOrder = 2;
                     trap.AddComponent<CircleCollider2D>().isTrigger = true;
                     trap.GetComponent<CircleCollider2D>().radius = 0.05f;
-                    trap.AddComponent<TrapStatus>().idtype = CharacterStatus.item[2];
+                    trap.AddComponent<TrapStatus>().idtype = gameObject.GetComponent<CharacterStatus>().item[2];
                     GameObject.Find("item2").GetComponent<Image>().sprite = null;
-                    CharacterStatus.item[2] = 0;
+                    gameObject.GetComponent<CharacterStatus>().item[2] = 0;
                 }
             }
             //Item 3
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (CharacterStatus.item[3] != 0 && CharacterStatus.item[3] != 2)
+                if (gameObject.GetComponent<CharacterStatus>().item[3] != 0 && gameObject.GetComponent<CharacterStatus>().item[3] != 2)
                 {
                     GameObject trap = new GameObject();
                     trap.transform.position = this.gameObject.transform.position;
                     trap.name = "Trap";
-                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + CharacterStatus.item[3].ToString() + "_1");
+                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + gameObject.GetComponent<CharacterStatus>().item[3].ToString() + "_1");
                     trap.GetComponent<SpriteRenderer>().sortingLayerName = "Ground-0";
                     trap.GetComponent<SpriteRenderer>().sortingOrder = 2;
                     trap.AddComponent<CircleCollider2D>().isTrigger = true;
                     trap.GetComponent<CircleCollider2D>().radius = 0.05f;
-                    trap.AddComponent<TrapStatus>().idtype = CharacterStatus.item[3];
+                    trap.AddComponent<TrapStatus>().idtype = gameObject.GetComponent<CharacterStatus>().item[3];
                     GameObject.Find("item3").GetComponent<Image>().sprite = null;
-                    CharacterStatus.item[3] = 0;
+                    gameObject.GetComponent<CharacterStatus>().item[3] = 0;
                 }
             }
             //Item 4
             if (Input.GetKeyDown(KeyCode.R))
             {
-                if (CharacterStatus.item[4] != 0 && CharacterStatus.item[4] != 2)
+                if (gameObject.GetComponent<CharacterStatus>().item[4] != 0 && gameObject.GetComponent<CharacterStatus>().item[4] != 2)
                 {
                     GameObject trap = new GameObject();
                     trap.transform.position = this.gameObject.transform.position;
                     trap.name = "Trap";
-                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + CharacterStatus.item[4].ToString() + "_1");
+                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + gameObject.GetComponent<CharacterStatus>().item[4].ToString() + "_1");
                     trap.GetComponent<SpriteRenderer>().sortingLayerName = "Ground-0";
                     trap.GetComponent<SpriteRenderer>().sortingOrder = 2;
                     trap.AddComponent<CircleCollider2D>().isTrigger = true;
                     trap.GetComponent<CircleCollider2D>().radius = 0.05f;
-                    trap.AddComponent<TrapStatus>().idtype = CharacterStatus.item[4];
+                    trap.AddComponent<TrapStatus>().idtype = gameObject.GetComponent<CharacterStatus>().item[4];
                     GameObject.Find("item4").GetComponent<Image>().sprite = null;
-                    CharacterStatus.item[4] = 0;
+                    gameObject.GetComponent<CharacterStatus>().item[4] = 0;
+                }
+            }
+
+            //Menu
+            if (Input.GetKeyDown("escape")) 
+            {
+                if (menu.activeSelf == true)
+                {
+                    menu.SetActive(false);
+                }
+                else
+                {
+                    menu.SetActive(true);
                 }
             }
 

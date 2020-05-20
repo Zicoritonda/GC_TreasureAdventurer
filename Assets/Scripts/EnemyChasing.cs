@@ -63,7 +63,7 @@ public class EnemyChasing : MonoBehaviour
         attackcount++;
         if (attackcount == 26)
         {
-            CharacterStatus.health -= demage;
+            Player.gameObject.GetComponent<CharacterStatus>().health -= demage;
             attackcount = 0;
         }
         //Debug.Log(attackcount);

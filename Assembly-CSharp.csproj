@@ -73,6 +73,8 @@
     <Compile Include="Assets\Scripts\ItemHandler.cs" />
     <Compile Include="Assets\Scripts\NavWithCollider.cs" />
     <Compile Include="Assets\Scripts\SceneNavigator.cs" />
+    <Compile Include="Assets\Scripts\StageStatus.cs" />
+    <Compile Include="Assets\Scripts\StagesController.cs" />
     <Compile Include="Assets\Scripts\TrapStatus.cs" />
     <Compile Include="Assets\Scripts\TreasureHandler.cs" />
     <None Include="Assets\Animated Trap\SpriteSheets\Trap.txt" />

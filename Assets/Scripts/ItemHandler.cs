@@ -43,11 +43,22 @@ public class ItemHandler : MonoBehaviour
                 {
                     if(CharacterStatus.item[i] == 0)
                     {
-                        CharacterStatus.item[i] = idtype;
-                        Debug.Log(CharacterStatus.item[i]);
-                        GameObject.Find("item" + i.ToString()).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/"+idtype.ToString() + "_1");
-                        Destroy(this.gameObject);
-                        break;
+                        if(idtype == 2)
+                        {
+                            CharacterStatus.item[i] = idtype;
+                            Debug.Log(CharacterStatus.item[i]);
+                            GameObject.Find("item" + i.ToString()).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/key");
+                            Destroy(this.gameObject);
+                            break;
+                        }
+                        else
+                        {
+                            CharacterStatus.item[i] = idtype;
+                            Debug.Log(CharacterStatus.item[i]);
+                            GameObject.Find("item" + i.ToString()).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/" + idtype.ToString() + "_1");
+                            Destroy(this.gameObject);
+                            break;
+                        }
                     }
                 }
             }

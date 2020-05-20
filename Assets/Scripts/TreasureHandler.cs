@@ -38,7 +38,15 @@ public class TreasureHandler : MonoBehaviour
     {
         if (transform.Find("TreasureCanvas").gameObject.activeSelf)
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            bool key = false;
+            foreach(int i in CharacterStatus.item)
+            {
+                if (i == 2)
+                {
+                    key = true;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.T) && key)
             {
                 GameObject.Find("Treasure").GetComponent<SpriteRenderer>().sprite = newimg;
             }

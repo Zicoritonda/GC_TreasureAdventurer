@@ -131,7 +131,7 @@ public class CharacterController : MonoBehaviour
             //Item 1
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                if(CharacterStatus.item[1] != 0)
+                if(CharacterStatus.item[1] != 0 && CharacterStatus.item[1] != 2)
                 {
                     GameObject trap = new GameObject();
                     trap.transform.position = this.gameObject.transform.position;
@@ -149,7 +149,7 @@ public class CharacterController : MonoBehaviour
             //Item 2
             if (Input.GetKeyDown(KeyCode.W))
             {
-                if (CharacterStatus.item[2] != 0)
+                if (CharacterStatus.item[2] != 0 && CharacterStatus.item[2] != 2)
                 {
                     GameObject trap = new GameObject();
                     trap.transform.position = this.gameObject.transform.position;
@@ -167,7 +167,7 @@ public class CharacterController : MonoBehaviour
             //Item 3
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (CharacterStatus.item[3] != 0)
+                if (CharacterStatus.item[3] != 0 && CharacterStatus.item[3] != 2)
                 {
                     GameObject trap = new GameObject();
                     trap.transform.position = this.gameObject.transform.position;
@@ -185,7 +185,7 @@ public class CharacterController : MonoBehaviour
             //Item 4
             if (Input.GetKeyDown(KeyCode.R))
             {
-                if (CharacterStatus.item[4] != 0)
+                if (CharacterStatus.item[4] != 0 && CharacterStatus.item[4] != 2)
                 {
                     GameObject trap = new GameObject();
                     trap.transform.position = this.gameObject.transform.position;

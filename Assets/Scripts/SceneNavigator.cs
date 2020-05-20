@@ -11,4 +11,10 @@ public class SceneNavigator : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void selectStage()
+    {
+        if (StagesController.stageNow == sceneName || StagesController.stages[sceneName]) SceneManager.LoadScene(sceneName);
+        if (StagesController.stageNow == sceneName || StagesController.castles[sceneName]) SceneManager.LoadScene(sceneName);
+    }
 }

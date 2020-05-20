@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 114486499}
   - component: {fileID: 114486498}
   - component: {fileID: 114486497}
+  - component: {fileID: 114486500}
   m_Layer: 5
   m_Name: Stage 1-2
   m_TagString: Untagged
@@ -472,6 +473,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114486495}
   m_CullTransparentMesh: 0
+--- !u!114 &114486500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114486495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2eff3b2b50cce438de3a552e54cd97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 
 --- !u!1 &124603229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1296,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 321383028}
-        m_MethodName: changeScene
+        m_MethodName: selectStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

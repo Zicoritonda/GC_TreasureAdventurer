@@ -6113,6 +6113,11 @@ PrefabInstance:
       propertyPath: win
       value: 
       objectReference: {fileID: 1442854005}
+    - target: {fileID: 7850621256091210057, guid: 1b567e0843bc4384f9ede2ea17b05fdc,
+        type: 3}
+      propertyPath: next
+      value: Stage 1-3
+      objectReference: {fileID: 0}
     - target: {fileID: 7850621256091210058, guid: 1b567e0843bc4384f9ede2ea17b05fdc,
         type: 3}
       propertyPath: m_LocalPosition.x

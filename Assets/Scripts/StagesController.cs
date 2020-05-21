@@ -7,7 +7,7 @@ public class StagesController : MonoBehaviour
 {
     public static Dictionary<string, bool> stages = new Dictionary<string, bool>
     {
-        {"Stage 1-1",true}, {"Stage 1-2",false}, {"Stage 1-3",false},
+        {"Stage 1-1",false}, {"Stage 1-2",false}, {"Stage 1-3",false},
         {"Stage 2-1",false}, {"Stage 2-2",false}, {"Stage 2-3",false}, {"Stage 2-4",false},
         {"Stage 3-1",false}, {"Stage 3-2",false}, {"Stage 3-3",false}, {"Stage 3-4",false},
         {"Stage 4-1",false}, {"Stage 4-2",false}, {"Stage 4-3",false},
@@ -25,7 +25,7 @@ public class StagesController : MonoBehaviour
 
     public static Dictionary<string, int> stagesStar = new Dictionary<string, int>
     {
-        {"Stage 1-1",2}, {"Stage 1-2",0}, {"Stage 1-3",0},
+        {"Stage 1-1",0}, {"Stage 1-2",0}, {"Stage 1-3",0},
         {"Stage 2-1",0}, {"Stage 2-2",0}, {"Stage 2-3",0}, {"Stage 2-4",0},
         {"Stage 3-1",0}, {"Stage 3-2",0}, {"Stage 3-3",0}, {"Stage 3-4",0},
         {"Stage 4-1",0}, {"Stage 4-2",0}, {"Stage 4-3",0},

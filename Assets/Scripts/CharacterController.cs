@@ -158,7 +158,7 @@ public class CharacterController : MonoBehaviour
                     GameObject trap = new GameObject();
                     trap.transform.position = this.gameObject.transform.position;
                     trap.name = "Trap";
-                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + gameObject.GetComponent<CharacterStatus>().item[1].ToString() + "_1");
+                    trap.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Item/" + gameObject.GetComponent<CharacterStatus>().item[2].ToString() + "_1");
                     trap.GetComponent<SpriteRenderer>().sortingLayerName = "Ground-0";
                     trap.GetComponent<SpriteRenderer>().sortingOrder = 2;
                     trap.AddComponent<CircleCollider2D>().isTrigger = true;

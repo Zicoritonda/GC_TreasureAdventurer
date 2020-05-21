@@ -43,7 +43,7 @@ public class CharacterController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(gameObject.GetComponent<CharacterStatus>().dead == false && !startStage.GetComponent<StartStage>().start)
         {
